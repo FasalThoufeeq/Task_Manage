@@ -1,6 +1,6 @@
 import axios from 'axios'
 
 const MyAxios= axios.create({
-    baseURL:'http://localhost:8000/api/'
+    baseURL:'https://taskmanagement-7fhl.onrender.com/api/'
 })
 export default MyAxios
