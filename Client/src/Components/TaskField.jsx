@@ -37,8 +37,8 @@ const TaskField = () => {
         ? Tasks?.filter((task) => {
             const { taskTitle, priority } = task;
             return (
-              taskTitle.toLowerCase().includes(searchValue.toLowerCase()) ||
-              priority.toLowerCase().includes(searchValue.toLowerCase())
+              taskTitle?.toLowerCase().includes(searchValue?.toLowerCase()) ||
+              priority?.toLowerCase().includes(searchValue?.toLowerCase())
             );
           })
         : [];
@@ -54,9 +54,9 @@ const TaskField = () => {
     const { priority } = filters;
 
     const filtered = Tasks?.filter((task) => {
-      const taskPriority = task?.priority.toLowerCase();
+      const taskPriority = task?.priority?.toLowerCase();
       return (
-        taskPriority === "" || taskPriority.includes(priority.toLowerCase())
+        taskPriority === "" || taskPriority?.includes(priority?.toLowerCase())
       );
     });
 
@@ -127,6 +127,7 @@ const TaskField = () => {
                       taskPicture={task?.taskPicture}
                       render={render}
                       setRender={setRender}
+                      createdAt={task?.createdAt}
                     />
                   </Grid>
                 );

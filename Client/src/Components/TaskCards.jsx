@@ -13,6 +13,8 @@ import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { DeleteTask } from "../Redux/taskSlice";
 import { toast } from "react-toastify";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import { format } from "timeago.js";
 
 const TaskCard = ({
   _id,
@@ -22,6 +24,7 @@ const TaskCard = ({
   taskPicture,
   render,
   setRender,
+  createdAt
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -64,6 +67,7 @@ const TaskCard = ({
         </CardContent>
         <CardActions>
           <Button
+          size="small"
             variant="text"
             style={{
               color: "black",
@@ -76,6 +80,7 @@ const TaskCard = ({
             EDIT
           </Button>
           <Button
+          size="small"
             variant="text"
             style={{
               color: "black",
@@ -108,6 +113,7 @@ const TaskCard = ({
                     >
                       No
                     </Button>
+                    
                   </div>
                 </div>,
                 {
@@ -119,6 +125,19 @@ const TaskCard = ({
           >
             DELETE
           </Button>
+          <Button
+          size="small"
+            variant="text"
+            style={{
+              color: "green",
+              marginBottom: "5px",
+              marginRight: "5px",
+            }}
+            startIcon={<AccessTimeIcon />}
+          >
+            {format(createdAt)}
+          </Button>
+          
         </CardActions>
       </Card>
     </>
@@ -133,6 +152,7 @@ TaskCard.propTypes = {
   taskPicture: PropTypes.string.isRequired,
   render: PropTypes.string.isRequired,
   setRender: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
 };
 
 export default TaskCard;
